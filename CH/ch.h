@@ -37,7 +37,7 @@ private:
 		SetOrder();
 		BuildG_CH();
 	}
-	void Connect(vector<Node>&E, int v, ll w) {
+	void Connect(vector<Node>& E, int v, ll w) {
 		for (auto& p : E)
 			if (p.fs == v) {
 				p.sc = min(p.sc, w);
@@ -69,11 +69,11 @@ private:
 	int GetImportance(int x) {
 		int u, v, shortcuts = 0, in_out = 0;
 		for (int i = 0; i < 2; ++i)
-			for (auto&p : G[i][x])
+			for (auto& p : G[i][x])
 				if (!contracted[p.fs])
 					++in_out;
 		for (auto& p1 : G[1][x])
-			for (auto&p2 : G[0][x]) {
+			for (auto& p2 : G[0][x]) {
 				u = p1.fs;
 				v = p2.fs;
 				if (!contracted[u] && !contracted[v])
@@ -105,7 +105,7 @@ private:
 	ll GetMaxEdge(int x) {
 		ll ret = 0;
 		for (auto& p1 : G[1][x])
-			for (auto&p2 : G[0][x])
+			for (auto& p2 : G[0][x])
 				if (p1.fs != p2.fs && !contracted[p1.fs] && !contracted[p2.fs])
 					ret = max(ret, p1.sc + p2.sc);
 		return ret;
